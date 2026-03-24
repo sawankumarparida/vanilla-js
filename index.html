@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Vanilla JS Counter</title>
+    <meta charset="UTF-8">
+    <title>My First Data Fetch</title>
+    <style>
+        /* A tiny bit of CSS to make it readable */
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        #task-display { color: blue; font-style: italic; margin: 20px; }
+        button { padding: 10px 20px; cursor: pointer; }
+    </style>
 </head>
 <body>
-    <h1 id="number">0</h1>
-    <button id="incrementBtn">Click Me!</button>
+
+    <h1>Server Task:</h1>
+    <div id="task-display">Click the button to load a task...</div>
+    
+    <button id="fetch-btn">Fetch New Task</button>
 
     <script src="script.js"></script>
+
 </body>
 </html>
