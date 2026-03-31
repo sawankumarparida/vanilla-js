@@ -1,4 +1,4 @@
-from livereload import Server
+from livereload import Server  # type: ignore
 
 server = Server()
 # Watch your HTML, JS, and CSS files
