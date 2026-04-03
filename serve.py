@@ -1,3 +1,6 @@
+"""
+Local development server using livereload.
+"""
 from livereload import Server  # type: ignore
 
 server = Server()
