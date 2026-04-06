@@ -1,8 +1,9 @@
-// 1. Grab the elements from the HTML
+/**
+ * SECTION 1: TASK GENERATOR LOGIC
+ */
 const btn = document.querySelector('#fetch-btn');
 const display = document.querySelector('#task-display');
 
-// 2. Create a local list of data (an Array)
 const myTasks = [
     "Finish MBA Assignment",
     "Practice Vanilla JS",
@@ -10,41 +11,44 @@ const myTasks = [
     "Check Business Analytics Data"
 ];
 
-// 3. Make the button do something
-btn.addEventListener('click', () => {
-    // Pick a random task from our list above
-    const randomIndex = Math.floor(Math.random() * myTasks.length);
-    const randomTask = myTasks[randomIndex];
-    
-    // Change the text on the screen
-    display.innerText = randomTask;
-    
-    // Change the color so we know it worked!
-    display.style.color = "green";
-});
-
-const toggleBtn = document.getElementById('theme-toggle');
-const currentTheme = localStorage.getItem('theme');
-
-// 1. Check for saved theme on load
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'dark') {
-        toggleBtn.textContent = "Switch to Light Mode";
-    }
+// Listener for the Task Button
+if (btn && display) {
+    btn.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * myTasks.length);
+        const randomTask = myTasks[randomIndex];
+        
+        display.innerText = randomTask;
+        
+        // We use a CSS class or variable for color instead of hardcoding "green"
+        // so it looks good in both light and dark modes!
+        display.style.color = "var(--accent-color)";
+    });
 }
 
-// 2. Add click event
-toggleBtn.addEventListener('click', () => {
-    let theme = document.documentElement.getAttribute('data-theme');
-    
-    if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        toggleBtn.textContent = "Switch to Dark Mode";
-        localStorage.setItem('theme', 'light');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        toggleBtn.textContent = "Switch to Light Mode";
-        localStorage.setItem('theme', 'dark');
+/**
+ * SECTION 2: THEME TOGGLE LOGIC
+ */
+const toggleBtn = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+
+// Helper function to update UI based on theme
+const updateThemeUI = (theme) => {
+    htmlElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (toggleBtn) {
+        toggleBtn.textContent = theme === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode";
     }
-});
+};
+
+// 1. Initial Load: Check for saved theme
+const savedTheme = localStorage.getItem('theme') || 'light';
+updateThemeUI(savedTheme);
+
+// 2. Click Event: Toggle between themes
+if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        updateThemeUI(newTheme);
+    });
+}
