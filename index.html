@@ -2,24 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My First Data Fetch</title>
-    <style>
-        /* A tiny bit of CSS to make it readable */
-        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-        #task-display { color: blue; font-style: italic; margin: 20px; }
-        button { padding: 10px 20px; cursor: pointer; }
-    </style>
+    <title>MBA & Dev Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="theme-toggle">Switch to Dark Mode</button>
+    <header style="text-align: right; padding: 20px;">
+        <button id="theme-toggle">Switch to Dark Mode</button>
+    </header>
 
-    <h1>Server Task:</h1>
-    <div id="task-display">Click the button to load a task...</div>
-    
-    <button id="fetch-btn">Fetch New Task</button>
+    <main style="text-align: center; margin-top: 50px;">
+        <h1>Task Generator</h1>
+        <div id="task-display" style="font-size: 2rem; margin-bottom: 20px;">
+            Click the button to get a task!
+        </div>
+        <button id="fetch-btn" class="main-btn">Fetch New Task</button>
+    </main>
 
     <script src="script.js"></script>
-
 </body>
 </html>
